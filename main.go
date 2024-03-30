@@ -1,7 +1,10 @@
 package main
 
-import usermstservices "cicd_api/services/usermstServices"
+import (
+	"cicd_api/commons/router"
+)
 
 func main() {
-	usermstservices.GetUserList()
+	router := router.Router()
+	router.Run()
 }

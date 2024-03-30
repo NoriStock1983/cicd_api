@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    container_name: cicd_app_test
+    build :
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/go/src/app
+    tty: true
+    command: go test ./...
+    ports:
+      - 8080:8080
