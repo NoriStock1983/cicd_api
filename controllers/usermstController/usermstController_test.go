@@ -17,6 +17,6 @@ func Test_GetAllUsermstController(t *testing.T) {
 	GetAllUsermstController(c)
 
 	assert.EqualValues(t, http.StatusOK, response.Code)
-	assert.EqualValues(t, "{\"message\":\"Hello World\"}", response.Body.String())
+	assert.EqualValues(t, "\"User List\"", response.Body.String())
 
 }
