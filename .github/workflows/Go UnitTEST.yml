@@ -27,6 +27,10 @@ jobs:
     - name: Lint
       run: go vet ./...
 
-    - name: Test
+    - name: Build Docker image
       #run: go test -v ./...
-      run: docker-compose -f ./docker-compose.yml run --rm go go test -v ./...
+      run: docker-compose -f ./docker-compose.yml build
+
+    # cicd_apiフォルダ内にあるdocker-composeの実行
+    - name: Test
+      run: docker-compose -f ./cicd_api/docker-compose.yml up -d
