@@ -32,5 +32,9 @@ jobs:
       run: docker-compose -f ./docker-compose.yml build
 
     # cicd_apiフォルダ内にあるdocker-composeの実行
-    - name: Test
+    - name: UnitTEST DB UP
       run: docker-compose -f ./docker-compose.yml up -d
+
+    # テスト実行
+    - name: UnitTEST
+      run: go test -v ./...

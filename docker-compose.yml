@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    container_name: cicd_app_test
+    container_name: cicd_backend
     build :
       context: .
       dockerfile: Dockerfile
@@ -10,6 +10,28 @@ services:
       - .:/go/src/app
     #コンテナの永続化
     tty: true
-    command: go test ./...
+    command: go run main.go
     ports:
       - 8080:8080
+
+
+  cicd_db:
+    container_name: cicd_db
+    image: mysql:8.3
+#    restart: always
+    environment:
+      ENV LANG: ja_JP.UTF-8
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cicd
+      MYSQL_USER: cicd
+      MYSQL_PASSWORD: cicd
+    ports:
+      - 3306:3306
+    volumes:
+      - ./scirpts:/docker-entrypoint-initdb.d    # 追加(scriptフォルダ内にあるスクリプトを実行する。)
+      - db_volume:/var/lib/mysql       # DBデータ永続化
+      
+# DBデータ永続化
+volumes:
+  db_volume:
