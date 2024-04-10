@@ -37,4 +37,8 @@ jobs:
 
     # テスト実行
     - name: UnitTEST
-      run: go test ./...
+      run: go test -cover ./... -coverprofile=./coverage/cover.out
+
+    # テスト結果をカバレッジレポートに変換
+    - name: Convert coverage to Cobertura
+      run: go tool cover -html=./coverage/cover.out -o ./coverage/cover.html

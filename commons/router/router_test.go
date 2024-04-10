@@ -23,5 +23,4 @@ func Test_Router(t *testing.T) {
 
 		assert.Equal(t, http.StatusOK, w.Code)
 	}
-
 }

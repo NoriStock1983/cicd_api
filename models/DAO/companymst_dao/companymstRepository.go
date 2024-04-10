@@ -3,6 +3,7 @@ package companymstdao
 import (
 	"cicd_api/commons/dbaccess"
 	"cicd_api/models/DTO/companymst_dto"
+	"fmt"
 )
 
 func GetAllCompanymst() ([]companymst_dto.Companymst, error) {
@@ -14,9 +15,10 @@ func GetAllCompanymst() ([]companymst_dto.Companymst, error) {
 	}
 	defer db.Close()
 
-	rows, error := db.Query("SELECT * FROM companymst")
+	rows, error := db.Query("SELECT * FROM ma_company")
 
 	if error != nil {
+		fmt.Println(error)
 		return nil, error
 	}
 	defer rows.Close()

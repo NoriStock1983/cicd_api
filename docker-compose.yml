@@ -29,7 +29,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./scirpts:/docker-entrypoint-initdb.d    # 追加(scriptフォルダ内にあるスクリプトを実行する。)
+      - ../scirpts:/docker-entrypoint-initdb.d    # 追加(scriptフォルダ内にあるスクリプトを実行する。)
       - db_volume:/var/lib/mysql       # DBデータ永続化
       
 # DBデータ永続化
